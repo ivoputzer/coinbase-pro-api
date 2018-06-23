@@ -1,4 +1,40 @@
 {
   "name": "coinbase-pro",
-  "version": "0.0.0-draft.0"
+  "version": "0.0.0-draft.0",
+  "dependencies": {
+    "gdax": "*"
+  },
+  "description": "alias of the official library for Coinbase's GDAX API.",
+  "main": "index.js",
+  "standard": {
+    "global": [
+      "test"
+    ]
+  },
+  "devDependencies": {
+    "m.test": "0.0.57",
+    "standard": "^11.0.1"
+  },
+  "scripts": {
+    "test": "m.test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivoputzer/coinbase-pro.git"
+  },
+  "keywords": [
+    "gdax",
+    "coinbase",
+    "api",
+    "client"
+  ],
+  "author": "Ivo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ivoputzer/coinbase-pro/issues"
+  },
+  "homepage": "https://github.com/ivoputzer/coinbase-pro#readme",
+  "directories": {
+    "test": "test"
+  }
 }
