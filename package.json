@@ -1,6 +1,7 @@
 {
   "name": "coinbase-pro",
   "version": "0.0.0-draft.1",
+  "private": true,
   "dependencies": {
     "gdax": "*"
   },
