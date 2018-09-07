@@ -1,4 +1,6 @@
 node_modules/
+coverage/
+.nyc_output/
 *.tgz
 *.log
 todo.md
