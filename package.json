@@ -5,12 +5,16 @@
   "dependencies": {},
   "description": "alias of the official library for Coinbase's GDAX API.",
   "main": "index.js",
+  "bin": { 
+    "coinbase-pro": "bin/index.js" 
+  },
   "standard": {
     "global": [
       "test"
     ]
   },
   "devDependencies": {
+    "console.table": "^0.10.0",
     "m.test": "0.0.57",
     "nock": "^9.5.0",
     "sinon": "^6.1.4",
@@ -18,6 +22,7 @@
   },
   "scripts": {
     "node": "node",
+    "bin": "node $npm_package_bin_coinbase_pro",
     "coverage": "npx nyc --reporter=text --reporter=lcov npm test",
     "test": "m.test"
   },
@@ -35,7 +40,7 @@
     "https",
     "client"
   ],
-  "author": "Ivo",
+  "author": "Ivo von Putzer Reibegg <ivo.putzer@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ivoputzer/coinbase-pro/issues"

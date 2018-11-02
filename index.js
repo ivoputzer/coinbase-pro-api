@@ -1,113 +1,73 @@
-const {get} = require('./lib/client')
+const querystring = require('querystring')
+const client = require('./lib/client')
 
-exports.getTime = (query = {}, {parse} = JSON) => {
-  return get('time', query).then(parse)
-}
+/////// Market Data
 
-// exports.getCurrencies = (options = {}, {parseJson} = exports, {stringify} = querystring) => {
-//   return request({
-//     method: 'get',
-//     protocol: 'https:',
-//     slashes: true,
-//     hostname: 'api.pro.coinbase.com',
-//     path: `/currencies?${stringify(options)}`,
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'Accept': 'application/json',
-//       'User-Agent': `${name} ${version}`
-//     }
-//   }).then(parseJson)
-// }
+exports.getProducts = (query = {}, {parse} = JSON, {stringify} = querystring, {request} = client) => request({ 
+  method: 'get', 
+  path: '/products?' + stringify(query) 
+}).then(parse)
 
-// exports.getProducts = (options = {}, {parseJson} = exports, {stringify} = querystring) => {
-//   return request({
-//     method: 'get',
-//     protocol: 'https:',
-//     slashes: true,
-//     hostname: 'api.pro.coinbase.com',
-//     path: `/products?${stringify(options)}`,
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'Accept': 'application/json',
-//       'User-Agent': `${name} ${version}`
-//     }
-//   }).then(parseJson)
-// }
+exports.getProductOrderBook = (productId, query = {}, {parse} = JSON, {stringify} = querystring, {request} = client) => request({
+  method: 'get',
+  path: '/products/' + productId + '/book?'+ stringify(query)
+}).then(parse)
 
-// exports.getProductOrderBook = (productId, options, {parseJson} = exports, {stringify} = querystring) => {
-//   return request({
-//     method: 'get',
-//     protocol: 'https:',
-//     slashes: true,
-//     hostname: 'api.pro.coinbase.com',
-//     path: `/products/${productId}/book?${stringify(options)}`,
-//     headers: {
-//       'User-Agent': `${name} ${version}`,
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json'
-//     }
-//   }).then(parseJson)
-// }
+exports.getProductTicker = (productId, query = {}, {parse} = JSON, {stringify} = querystring, {request} = client) => request({
+  method: 'get',
+  path: '/products/' + productId + '/ticker?' + stringify(query)
+}).then(parse)
 
-// exports.getProductTicker = (productId, options, {parseJson} = exports, {stringify} = querystring) => {
-//   return request({
-//     method: 'get',
-//     protocol: 'https:',
-//     slashes: true,
-//     hostname: 'api.pro.coinbase.com',
-//     path: `/products/${productId}/ticker?${stringify(options)}`,
-//     headers: {
-//       'User-Agent': `${name} ${version}`,
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json'
-//     }
-//   }).then(parseJson)
-// }
+exports.getProductTrades = (productId, query = {}, {parse} = JSON, {stringify} = querystring, {request} = client) => request({
+  method: 'get',
+  path: '/products/' + productId + '/trades?' + stringify(query)
+}).then(parse)
 
-// exports.getProductHistoricRates = (productId, options, {parseJson} = exports, {stringify} = querystring) => {
-//   return request({
-//     method: 'get',
-//     protocol: 'https:',
-//     slashes: true,
-//     hostname: 'api.pro.coinbase.com',
-//     path: `/products/${productId}/candles?${stringify(options)}`,
-//     headers: {
-//       'User-Agent': `${name} ${version}`,
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json'
-//     }
-//   }).then(parseJson)
-// }
+exports.getProductTradeStream = Function.prototype // todo: this could either a stream or a recursive promise
 
-// exports.getProduct24HrStats = (productId, options, {parseJson} = exports, {stringify} = querystring) => {
-//   return request({
-//     method: 'get',
-//     protocol: 'https:',
-//     slashes: true,
-//     hostname: 'api.pro.coinbase.com',
-//     path: `/products/${productId}/stats?${stringify(options)}`,
-//     headers: {
-//       'User-Agent': `${name} ${version}`,
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json'
-//     }
-//   }).then(parseJson)
-// }
+exports.getProductHistoricRates = (productId, query = {}, {parse} = JSON, {stringify} = querystring, {request} = client) => request({
+  method: 'get',
+  path: '/products/' + productId + '/candles?' + stringify(query)
+}).then(parse)
 
-// exports.getProductTrades = (productId, options, {parseJson} = exports, {stringify} = querystring) => {
-//   return request({
-//     method: 'get',
-//     protocol: 'https:',
-//     slashes: true,
-//     hostname: 'api.pro.coinbase.com',
-//     path: `/products/${productId}/trades?${stringify(options)}`,
-//     headers: {
-//       'User-Agent': `${name} ${version}`,
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json'
-//     }
-//   }).then(parseJson)
-// }
+exports.getProduct24HrStats = (productId, query = {}, {parse} = JSON, {stringify} = querystring, {request} = client) => request({
+  method: 'get',
+  path: '/products/' + productId + '/stats?' + stringify(query)
+}).then(parse)
+
+exports.getCurrencies = (query = {}, {parse} = JSON, {stringify} = querystring, {request} = client) => request({
+  method: 'get',
+  path: '/currencies?' + stringify(query),
+}).then(parse)
+
+exports.getTime = (query = {}, {parse} = JSON, {stringify} = querystring, {request} = client) => request({
+  method: 'get',
+  path: '/time?' + stringify(query)
+}).then(parse)
+
+/////// Private
+
+exports.getCoinbaseAccounts = (query = {}, {parse} = JSON, {stringify} = querystring, {request} = client) => request({
+  method: 'get',
+  path: '/coinbase-accounts?' + stringify(query)
+}).then(parse)
+
+exports.getPaymentMethods = (query = {}, {parse} = JSON, {stringify} = querystring, {request} = client) => request({
+  method: 'get',
+  path: '/payment-methods?' + stringify(query)
+}).then(parse)
+
+exports.getAccounts = (query = {}, {parse} = JSON, {stringify} = querystring, {request} = client) => request({
+  method: 'get',
+  path: '/accounts?' + stringify(query)
+}).then(parse)
+
+
+
+
+
+
+
 
 // exports.getProductTradeStream = Function.prototype // todo
 
