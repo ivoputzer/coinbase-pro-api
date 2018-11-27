@@ -1,12 +1,17 @@
 {
   "name": "coinbase-pro",
-  "version": "0.0.0-draft.1",
+  "version": "0.0.0-draft.2",
   "private": true,
   "dependencies": {},
-  "description": "alias of the official library for Coinbase's GDAX API.",
+  "description": "lightweight implementation of coinbase-pro api.",
   "main": "index.js",
-  "bin": { 
-    "coinbase-pro": "bin/index.js" 
+  "bin": {
+    "coinbase-pro": "bin/index.js"
+  },
+  "config": {
+    "coinbase_pro_key": null,
+    "coinbase_pro_passphrase": null,
+    "coinbase_pro_secret": null
   },
   "standard": {
     "global": [
@@ -16,8 +21,8 @@
   "devDependencies": {
     "console.table": "^0.10.0",
     "m.test": "0.0.57",
-    "nock": "^9.5.0",
-    "sinon": "^6.1.4",
+    "nock": "^10.0.2",
+    "sinon": "^6.3.5",
     "standard": "^11.0.1"
   },
   "scripts": {
