@@ -1,0 +1,67 @@
+language: node_js
+if: tag IS blank
+git:
+  depth: 1
+node_js:
+- 10
+- 9
+- 8
+- 7
+- 6
+- 5
+- 4
+cache:
+  directories:
+  - $HOME/.npm
+jobs:
+  allow_failures:
+  - node_js: 5
+  - node_js: 4
+  include:
+  - stage: lint
+    install: ignore
+    script:
+    - npx standard
+  - stage: cover
+    script:
+    - npx nyc --reporter=text --reporter=lcov npm test
+    deploy:
+    - provider: script
+      skip_cleanup: true
+      script:
+      - npx nyc report --reporter=text-lcov | npx coveralls --verbose
+    - provider: pages
+      skip_cleanup: true
+      local_dir: coverage/lcov-report
+      github_token: $GITHUB_TOKEN
+      on:
+        repo: $TRAVIS_REPO_SLUG
+        branch: master
+  - stage: push
+    if: branch = master
+    install: ignore
+    script:
+    - export NPM_PACKAGE=$(npm --silent pack)
+    after_success:
+    - NPM_VERSION_TAR=${NPM_PACKAGE##*-}
+    - export NPM_PACKAGE_VERSION=${NPM_VERSION_TAR%.*}
+    - export NPM_RELEASE_VERSION=$(npm --silent view $PWD version)
+    - git tag --annotate $NPM_PACKAGE_VERSION --message $NPM_PACKAGE_VERSION
+    - git describe --tags --exact-match
+    deploy:
+    - provider: npm
+      email: ivo.putzer@gmail.com
+      api_key: $NPM_TOKEN
+      on:
+        repo: $TRAVIS_REPO_SLUG
+    - provider: releases
+      skip_cleanup: true
+      overwrite: false
+      file: $NPM_PACKAGE
+      api_key: $GITHUB_API_KEY
+      on:
+        repo: $TRAVIS_REPO_SLUG
+        condition:
+        - $NPM_RELEASE_VERSION != $(npm --silent view $PWD version)
+notifications:
+  email: false

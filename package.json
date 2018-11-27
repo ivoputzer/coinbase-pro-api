@@ -1,21 +1,34 @@
 {
   "name": "coinbase-pro",
-  "version": "0.0.0-draft.1",
-  "dependencies": {
-    "gdax": "*"
-  },
-  "description": "alias of the official library for Coinbase's GDAX API.",
+  "version": "0.0.0-draft.2",
+  "private": true,
+  "dependencies": {},
+  "description": "lightweight implementation of coinbase-pro api.",
   "main": "index.js",
+  "bin": {
+    "coinbase-pro": "bin/index.js"
+  },
+  "config": {
+    "coinbase_pro_key": null,
+    "coinbase_pro_passphrase": null,
+    "coinbase_pro_secret": null
+  },
   "standard": {
     "global": [
       "test"
     ]
   },
   "devDependencies": {
+    "console.table": "^0.10.0",
     "m.test": "0.0.57",
+    "nock": "^10.0.2",
+    "sinon": "^6.3.5",
     "standard": "^11.0.1"
   },
   "scripts": {
+    "node": "node",
+    "bin": "node $npm_package_bin_coinbase_pro",
+    "coverage": "npx nyc --reporter=text --reporter=lcov npm test",
     "test": "m.test"
   },
   "repository": {
@@ -23,12 +36,16 @@
     "url": "git+https://github.com/ivoputzer/coinbase-pro.git"
   },
   "keywords": [
-    "gdax",
     "coinbase",
+    "pro",
     "api",
+    "gdax",
+    "secure",
+    "http",
+    "https",
     "client"
   ],
-  "author": "Ivo",
+  "author": "Ivo von Putzer Reibegg <ivo.putzer@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ivoputzer/coinbase-pro/issues"
