@@ -61,7 +61,7 @@ exports.getAccounts = (query = {}, {parse} = JSON, {stringify} = querystring, {r
 exports.getAccount = (accountId, query = {}, {parse} = JSON, {stringify} = querystring, {request} = client) => request({
   method: 'get',
   path: '/accounts/' + accountId + '?' + stringify(query)
-}).this(parse)
+}).then(parse)
 
 exports.getAccountHistory = (accountId, query = {}, {parse} = JSON, {stringify} = querystring, {request} = client) => request({
   method: 'get',
