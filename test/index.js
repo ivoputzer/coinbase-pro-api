@@ -1,8 +1,8 @@
 const nock = require('nock')
 
 test('coinbase-pro', () => {
+  const {uuid} = require('m.uuid')
   const {equal, fail, deepEqual} = require('assert')
-
   test('.getProducts', () => {
     const {getProducts} = require('..')
 
@@ -15,14 +15,10 @@ test('coinbase-pro', () => {
         .matchHeader('user-agent', /.*/)
         .get('/products')
         .query({})
-        .reply(200, [])
+        .reply(200, Array.prototype)
 
-      try {
-        const response = await getProducts()
-        deepEqual(response, [])
-      } catch (err) {
-        fail(err)
-      }
+      const response = await getProducts()
+      deepEqual(response, Array.prototype)
     })
   })
 
@@ -38,10 +34,10 @@ test('coinbase-pro', () => {
         .matchHeader('user-agent', /.*/)
         .get('/products/btc-eur/book')
         .query({})
-        .reply(200, {})
+        .reply(200, Object.prototype)
 
       const response = await getProductOrderBook('btc-eur')
-      deepEqual(response, {})
+      deepEqual(response, Object.prototype)
     })
   })
 
@@ -177,8 +173,8 @@ test('coinbase-pro', () => {
     test('fetches time and parses json response', async () => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_package_config_coinbase_pro_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_package_config_coinbase_pro_passphrase)
+        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
+        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/coinbase-accounts')
@@ -200,8 +196,8 @@ test('coinbase-pro', () => {
     test('fetches time and parses json response', async () => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_package_config_coinbase_pro_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_package_config_coinbase_pro_passphrase)
+        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
+        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/payment-methods')
@@ -223,8 +219,8 @@ test('coinbase-pro', () => {
     test('fetches time and parses json response', async () => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_package_config_coinbase_pro_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_package_config_coinbase_pro_passphrase)
+        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
+        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/accounts')
@@ -244,18 +240,23 @@ test('coinbase-pro', () => {
     })
 
     test('fetches time and parses json response', async () => {
+      const accountId = uuid()
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_package_config_coinbase_pro_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_package_config_coinbase_pro_passphrase)
+        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
+        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
-        .get('/accounts/1')
+        .get('/accounts/' + accountId)
         .query({})
-        .reply(200, {})
-
-      const response = await getAccount(1)
-      deepEqual(response, {})
+        .reply(200, Object.prototype)
+      try {
+        const response = await getAccount(accountId)
+        deepEqual(response, Object.prototype)
+      } catch (err) {
+        console.error(err)
+        fail(err)
+      }
     })
   })
 
@@ -269,8 +270,8 @@ test('coinbase-pro', () => {
     test('fetches time and parses json response', async () => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_package_config_coinbase_pro_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_package_config_coinbase_pro_passphrase)
+        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
+        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/accounts/1/ledger')
@@ -292,8 +293,8 @@ test('coinbase-pro', () => {
     test('fetches time and parses json response', async () => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_package_config_coinbase_pro_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_package_config_coinbase_pro_passphrase)
+        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
+        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/accounts/1/transfers')
@@ -315,8 +316,8 @@ test('coinbase-pro', () => {
     test('fetches time and parses json response', async () => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_package_config_coinbase_pro_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_package_config_coinbase_pro_passphrase)
+        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
+        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/accounts/1/holds')
@@ -327,5 +328,4 @@ test('coinbase-pro', () => {
       deepEqual(response, [])
     })
   })
-
 })
