@@ -4,7 +4,7 @@ Lightweight implementation of coinbase-pro api.
 
 ### Install
 ```sh
-npm install coinbase-pro
+npm install coinbase-pro-api
 ```
 
 ### Usage
