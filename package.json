@@ -8,11 +8,6 @@
   "bin": {
     "coinbase-pro": "bin/index.js"
   },
-  "config": {
-    "coinbase_pro_key": null,
-    "coinbase_pro_passphrase": null,
-    "coinbase_pro_secret": null
-  },
   "standard": {
     "global": [
       "test"
@@ -21,6 +16,7 @@
   "devDependencies": {
     "console.table": "^0.10.0",
     "m.test": "0.0.57",
+    "m.uuid": "^1.0.0",
     "nock": "^10.0.2",
     "sinon": "^6.3.5",
     "standard": "^11.0.1"
