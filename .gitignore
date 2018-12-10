@@ -3,5 +3,6 @@ coverage/
 .nyc_output/
 *.tgz
 *.log
+package-lock.json
 todo.md
 .npmrc
