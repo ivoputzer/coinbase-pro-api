@@ -1,13 +1,13 @@
 /* eslint-disable camelcase */
 
-const {ok, deepEqual} = require('assert')
-
 test('lib/client', () => {
+  const { ok, deepStrictEqual } = require('assert')
+
   test('.signatureFor', () => {
-    const {signatureFor} = require('../../lib/client')
+    const { signatureFor } = require('../../lib/client')
 
     test('is callable', () => {
-      deepEqual(typeof signatureFor, 'function')
+      deepStrictEqual(typeof signatureFor, 'function')
     })
 
     test('contains mandatory headers', () => {
@@ -24,11 +24,11 @@ test('lib/client', () => {
       const npm_config_coinbase_pro_api_passphrase = 'passphrase'
       const npm_config_coinbase_pro_api_secret = Buffer.from('secret').toString('base64')
 
-      const signature = signatureFor({}, {npm_config_coinbase_pro_api_key, npm_config_coinbase_pro_api_passphrase, npm_config_coinbase_pro_api_secret}, {createHmac})
+      const signature = signatureFor({}, { npm_config_coinbase_pro_api_key, npm_config_coinbase_pro_api_passphrase, npm_config_coinbase_pro_api_secret }, { createHmac })
 
-      deepEqual(signature['CB-ACCESS-KEY'], npm_config_coinbase_pro_api_key)
-      deepEqual(signature['CB-ACCESS-PASSPHRASE'], npm_config_coinbase_pro_api_passphrase)
-      deepEqual(signature['CB-ACCESS-SIGN'], Buffer.from('secret'))
+      deepStrictEqual(signature['CB-ACCESS-KEY'], npm_config_coinbase_pro_api_key)
+      deepStrictEqual(signature['CB-ACCESS-PASSPHRASE'], npm_config_coinbase_pro_api_passphrase)
+      deepStrictEqual(signature['CB-ACCESS-SIGN'], Buffer.from('secret'))
 
       function createHmac (_, secret) {
         return {
@@ -57,7 +57,7 @@ test('lib/client', () => {
   //   const {headersFor} = require('../../lib/client')
 
   //   test('is callable', () => {
-  //     deepEqual(typeof headersFor, 'function')
+  //     deepStrictEqual(typeof headersFor, 'function')
   //   })
   // })
 
@@ -65,7 +65,7 @@ test('lib/client', () => {
   //   const {headersFor} = require('../../lib/client')
 
   //   test('is callable', () => {
-  //     deepEqual(typeof headersFor, 'function')
+  //     deepStrictEqual(typeof headersFor, 'function')
   //   })
   // })
 
@@ -73,7 +73,7 @@ test('lib/client', () => {
   //   const {hostnameFor} = require('../../lib/client')
 
   //   test('is callable', () => {
-  //     deepEqual(typeof hostnameFor, 'function')
+  //     deepStrictEqual(typeof hostnameFor, 'function')
   //   })
   // })
 
@@ -81,14 +81,14 @@ test('lib/client', () => {
   //   const {request: requestFor} = require('../../lib/client')
 
   //   test('is callable', () => {
-  //     deepEqual(typeof requestFor, 'function')
+  //     deepStrictEqual(typeof requestFor, 'function')
   //   })
   // })
 
   // test('.toString', () => {
   //   const {toString} = require('../../lib/client')
   //   test('is callable', () => {
-  //     deepEqual(typeof toString, 'function')
+  //     deepStrictEqual(typeof toString, 'function')
   //   })
   // })
 })
@@ -157,7 +157,7 @@ test('lib/client', () => {
 //     request(options, {}, https)
 //       .then(done)
 //       .catch(err => {
-//         deepEqual(err, {error: true})
+//         deepStrictEqual(err, {error: true})
 //         done()
 //       })
 //   })
