@@ -1,6 +1,6 @@
 {
   "name": "coinbase-pro-api",
-  "version": "0.0.0-draft.2",
+  "version": "0.0.0-draft.3",
   "description": "lightweight coinbase pro api implementation",
   "main": "index.js",
   "standard": {
@@ -12,8 +12,7 @@
   "devDependencies": {
     "m.test": "0.0.57",
     "m.uuid": "^1.0.0",
-    "nock": "^10.0.2",
-    "sinon": "^6.3.5"
+    "nock": "^10.0.5"
   },
   "scripts": {
     "node": "node",
