@@ -474,9 +474,6 @@ test('coinbase-pro-api', () => {
     })
   })
 
-
-
-
   test('.getOrders', () => {
     const {getOrders} = require('..')
 
