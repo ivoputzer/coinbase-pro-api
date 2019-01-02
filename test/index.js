@@ -378,4 +378,148 @@ test('coinbase-pro-api', () => {
       deepEqual(response, Object.prototype)
     })
   })
+
+  test('.cancelOrder', () => {
+    const {cancelOrder} = require('..')
+
+    test('is of type function', () => {
+      equal(typeof cancelOrder, 'function')
+    })
+
+    test('cancels order and parses json response', async () => {
+      const orderId = uuid()
+
+      nock('https://api.pro.coinbase.com')
+        .matchHeader('user-agent', /.*/)
+        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
+        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-sign', /.{44}/)
+        .matchHeader('cb-access-timestamp', /\d{10}\..*/)
+        .delete('/orders/' + orderId)
+        .reply(200, Array.prototype)
+
+      const response = await cancelOrder(orderId)
+      deepEqual(response, Array.prototype)
+    })
+  })
+
+  test('.cancelOrders', () => {
+    const {cancelOrders} = require('..')
+
+    test('is of type function', () => {
+      equal(typeof cancelOrders, 'function')
+    })
+
+    test('cancels open orders and parses json response', async () => {
+      nock('https://api.pro.coinbase.com')
+        .matchHeader('user-agent', /.*/)
+        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
+        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-sign', /.{44}/)
+        .matchHeader('cb-access-timestamp', /\d{10}\..*/)
+        .delete('/orders')
+        .query({})
+        .reply(200, Array.prototype)
+
+      const response = await cancelOrders()
+      deepEqual(response, Array.prototype)
+    })
+  })
+
+  test('.getOrders', () => {
+    const {getOrders} = require('..')
+
+    test('is of type function', () => {
+      equal(typeof getOrders, 'function')
+    })
+
+    test('fetches orders and parses json response', async () => {
+      nock('https://api.pro.coinbase.com')
+        .matchHeader('user-agent', /.*/)
+        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
+        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-sign', /.{44}/)
+        .matchHeader('cb-access-timestamp', /\d{10}\..*/)
+        .get('/orders')
+        .query(Object.prototype)
+        .reply(200, Array.prototype)
+
+      const response = await getOrders()
+      deepEqual(response, Array.prototype)
+    })
+  })
+
+  test('.getOrder', () => {
+    const {getOrder} = require('..')
+
+    test('is of type function', () => {
+      equal(typeof getOrder, 'function')
+    })
+
+    test('fetches order and parses json response', async () => {
+      const orderId = uuid()
+
+      nock('https://api.pro.coinbase.com')
+        .matchHeader('user-agent', /.*/)
+        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
+        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-sign', /.{44}/)
+        .matchHeader('cb-access-timestamp', /\d{10}\..*/)
+        .get('/orders/' + orderId)
+        .query(Object.prototype)
+        .reply(200, Object.prototype)
+
+      const response = await getOrder(orderId)
+      deepEqual(response, Object.prototype)
+    })
+  })
+
+
+
+
+  test('.getOrders', () => {
+    const {getOrders} = require('..')
+
+    test('is of type function', () => {
+      equal(typeof getOrders, 'function')
+    })
+
+    test('fetches orders and parses json response', async () => {
+      nock('https://api.pro.coinbase.com')
+        .matchHeader('user-agent', /.*/)
+        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
+        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-sign', /.{44}/)
+        .matchHeader('cb-access-timestamp', /\d{10}\..*/)
+        .get('/orders')
+        .query(Object.prototype)
+        .reply(200, Array.prototype)
+
+      const response = await getOrders()
+      deepEqual(response, Array.prototype)
+    })
+  })
+
+  test('.getFills', () => {
+    const {getFills} = require('..')
+
+    test('is of type function', () => {
+      equal(typeof getFills, 'function')
+    })
+
+    test('fetches fills and parses json response', async () => {
+      nock('https://api.pro.coinbase.com')
+        .matchHeader('user-agent', /.*/)
+        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
+        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-sign', /.{44}/)
+        .matchHeader('cb-access-timestamp', /\d{10}\..*/)
+        .get('/fills')
+        .query(Object.prototype)
+        .reply(200, Array.prototype)
+
+      const response = await getFills()
+      deepEqual(response, Array.prototype)
+    })
+  })
 })

@@ -97,13 +97,32 @@ exports.cancelOrder = (orderId, {parse} = JSON, {stringify} = JSON, {request} = 
   path: '/orders/' + orderId
 }).then(parse)
 
-// exports.cancelOrders = Function.prototype
-// exports.cancelAllOrders = Function.prototype
+exports.cancelOrders = (query = {}, {parse} = JSON, {stringify} = querystring, {request} = client) => request({
+  method: 'delete',
+  path: '/orders?' + stringify(query)
+}).then(parse)
 
-// exports.getOrders = Function.prototype
-// exports.getOrder = Function.prototype
-// exports.getFills = Function.prototype
-// exports.getFundings = Function.prototype
+exports.cancelAllOrders = Function.prototype
+
+exports.getOrders = (query = {}, {parse} = JSON, {stringify} = querystring, {request} = client) => request({
+  method: 'get',
+  path: '/orders?' + stringify(query)
+}).then(parse)
+
+exports.getOrder = (orderId, query = {}, {parse} = JSON, {stringify} = querystring, {request} = client) => request({
+  method: 'get',
+  path: '/orders/' + orderId + '?' + stringify(query)
+}).then(parse)
+
+exports.getOrders = (query = {}, {parse} = JSON, {stringify} = querystring, {request} = client) => request({
+  method: 'get',
+  path: '/orders?' + stringify(query)
+}).then(parse)
+
+exports.getFills = (query = {}, {parse} = JSON, {stringify} = querystring, {request} = client) => request({
+  method: 'get',
+  path: '/fills?' + stringify(query)
+}).then(parse)
 
 // exports.repay = Function.prototype
 // exports.marginTransfer = Function.prototype
