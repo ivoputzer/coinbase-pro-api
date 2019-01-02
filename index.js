@@ -21,7 +21,10 @@ exports.getProductTrades = (productId, query = {}, {parse} = JSON, {stringify} =
   path: '/products/' + productId + '/trades?' + stringify(query)
 }).then(parse)
 
-exports.getProductTradeStream = Function.prototype // todo: this could either a stream or a recursive promise
+// todo
+// the following method could be replaced with a recursive promise implementation
+// on exports.getProductTrades that takes care of pagination and rate limits.
+exports.getProductTradeStream = Function.prototype
 
 exports.getProductHistoricRates = (productId, query = {}, {parse} = JSON, {stringify} = querystring, {request} = client) => request({
   method: 'get',
@@ -77,6 +80,35 @@ exports.getAccountHolds = (accountId, query = {}, {parse} = JSON, {stringify} = 
   method: 'get',
   path: '/accounts/' + accountId + '/holds?' + stringify(query)
 }).then(parse)
+
+// todo
+// the following methods can be replaced by exports.placeOrder for now
+exports.buy = Function.prototype
+exports.sell = Function.prototype
+
+exports.placeOrder = (data, {parse} = JSON, {stringify} = JSON, {request} = client) => request({
+  method: 'post',
+  path: '/orders',
+  body: stringify(data)
+}).then(parse)
+
+exports.cancelOrder = (orderId, {parse} = JSON, {stringify} = JSON, {request} = client) => request({
+  method: 'delete',
+  path: '/orders/' + orderId
+}).then(parse)
+
+// exports.cancelOrders = Function.prototype
+// exports.cancelAllOrders = Function.prototype
+
+// exports.getOrders = Function.prototype
+// exports.getOrder = Function.prototype
+// exports.getFills = Function.prototype
+// exports.getFundings = Function.prototype
+
+// exports.repay = Function.prototype
+// exports.marginTransfer = Function.prototype
+// exports.closePosition = Function.prototype
+// exports.convert = Function.prototype
 
 // - [ ] getOrders
 // - [ ] getOrder

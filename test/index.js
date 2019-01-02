@@ -1,8 +1,9 @@
 const nock = require('nock')
 
-test('coinbase-pro', () => {
+test('coinbase-pro-api', () => {
   const {uuid} = require('m.uuid')
-  const {equal, fail, deepEqual} = require('assert')
+  const {equal, deepEqual} = require('assert')
+
   test('.getProducts', () => {
     const {getProducts} = require('..')
 
@@ -14,7 +15,7 @@ test('coinbase-pro', () => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
         .get('/products')
-        .query({})
+        .query(Object.prototype)
         .reply(200, Array.prototype)
 
       const response = await getProducts()
@@ -33,7 +34,7 @@ test('coinbase-pro', () => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
         .get('/products/btc-eur/book')
-        .query({})
+        .query(Object.prototype)
         .reply(200, Object.prototype)
 
       const response = await getProductOrderBook('btc-eur')
@@ -52,11 +53,11 @@ test('coinbase-pro', () => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
         .get('/products/btc-eur/ticker')
-        .query({})
-        .reply(200, {})
+        .query(Object.prototype)
+        .reply(200, Object.prototype)
 
       const response = await getProductTicker('btc-eur')
-      deepEqual(response, {})
+      deepEqual(response, Object.prototype)
     })
   })
 
@@ -71,19 +72,25 @@ test('coinbase-pro', () => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
         .get('/products/btc-eur/trades')
-        .query({})
-        .reply(200, {})
+        .query(Object.prototype)
+        .reply(200, Array.prototype)
 
       const response = await getProductTrades('btc-eur')
-      deepEqual(response, {})
+      deepEqual(response, Array.prototype)
     })
+
+    // todo: deal with pagination and rate limits when necessary
   })
 
-  test.skip('.getProductTradeStream', () => {
+  test('.getProductTradeStream', () => {
     const {getProductTradeStream} = require('..')
 
     test('is of type function', () => {
       equal(typeof getProductTradeStream, 'function')
+    })
+
+    test.skip('fetches product trades and parses parses json response(s) into readable stream', () => {
+      // todo
     })
   })
 
@@ -98,11 +105,11 @@ test('coinbase-pro', () => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
         .get('/products/btc-eur/candles')
-        .query({})
-        .reply(200, {})
+        .query(Object.prototype)
+        .reply(200, Array.prototype)
 
       const response = await getProductHistoricRates('btc-eur')
-      deepEqual(response, {})
+      deepEqual(response, Array.prototype)
     })
   })
 
@@ -117,11 +124,11 @@ test('coinbase-pro', () => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
         .get('/products/btc-eur/stats')
-        .query({})
-        .reply(200, {})
+        .query(Object.prototype)
+        .reply(200, Object.prototype)
 
       const response = await getProduct24HrStats('btc-eur')
-      deepEqual(response, {})
+      deepEqual(response, Object.prototype)
     })
   })
 
@@ -136,11 +143,11 @@ test('coinbase-pro', () => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
         .get('/currencies')
-        .query({})
-        .reply(200, {})
+        .query(Object.prototype)
+        .reply(200, Array.prototype)
 
       const response = await getCurrencies()
-      deepEqual(response, {})
+      deepEqual(response, Array.prototype)
     })
   })
 
@@ -155,11 +162,11 @@ test('coinbase-pro', () => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
         .get('/time')
-        .query({})
-        .reply(200, {})
+        .query(Object.prototype)
+        .reply(200, Object.prototype)
 
       const response = await getTime()
-      deepEqual(response, {})
+      deepEqual(response, Object.prototype)
     })
   })
 
@@ -170,7 +177,7 @@ test('coinbase-pro', () => {
       equal(typeof getCoinbaseAccounts, 'function')
     })
 
-    test('fetches time and parses json response', async () => {
+    test('fetches coinbase accounts and parses json response', async () => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
         .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
@@ -178,11 +185,11 @@ test('coinbase-pro', () => {
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/coinbase-accounts')
-        .query({})
-        .reply(200, {})
+        .query(Object.prototype)
+        .reply(200, Array.prototype)
 
       const response = await getCoinbaseAccounts()
-      deepEqual(response, {})
+      deepEqual(response, Array.prototype)
     })
   })
 
@@ -193,7 +200,7 @@ test('coinbase-pro', () => {
       equal(typeof getPaymentMethods, 'function')
     })
 
-    test('fetches time and parses json response', async () => {
+    test('fetches payment methods and parses json response', async () => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
         .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
@@ -201,11 +208,11 @@ test('coinbase-pro', () => {
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/payment-methods')
-        .query({})
-        .reply(200, [])
+        .query(Object.prototype)
+        .reply(200, Array.prototype)
 
       const response = await getPaymentMethods()
-      deepEqual(response, [])
+      deepEqual(response, Array.prototype)
     })
   })
 
@@ -216,7 +223,7 @@ test('coinbase-pro', () => {
       equal(typeof getAccounts, 'function')
     })
 
-    test('fetches time and parses json response', async () => {
+    test('fetches accounts and parses json response', async () => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
         .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
@@ -224,11 +231,11 @@ test('coinbase-pro', () => {
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/accounts')
-        .query({})
-        .reply(200, [])
+        .query(Object.prototype)
+        .reply(200, Array.prototype)
 
       const response = await getAccounts()
-      deepEqual(response, [])
+      deepEqual(response, Array.prototype)
     })
   })
 
@@ -239,8 +246,9 @@ test('coinbase-pro', () => {
       equal(typeof getAccount, 'function')
     })
 
-    test('fetches time and parses json response', async () => {
+    test('fetches account and parses json response', async () => {
       const accountId = uuid()
+
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
         .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
@@ -248,15 +256,11 @@ test('coinbase-pro', () => {
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/accounts/' + accountId)
-        .query({})
+        .query(Object.prototype)
         .reply(200, Object.prototype)
-      try {
-        const response = await getAccount(accountId)
-        deepEqual(response, Object.prototype)
-      } catch (err) {
-        console.error(err)
-        fail(err)
-      }
+
+      const response = await getAccount(accountId)
+      deepEqual(response, Object.prototype)
     })
   })
 
@@ -267,19 +271,21 @@ test('coinbase-pro', () => {
       equal(typeof getAccountHistory, 'function')
     })
 
-    test('fetches time and parses json response', async () => {
+    test('fetches account history and parses json response', async () => {
+      const accountId = uuid()
+
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
         .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
         .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
-        .get('/accounts/1/ledger')
-        .query({})
-        .reply(200, [])
+        .get('/accounts/' + accountId + '/ledger')
+        .query(Object.prototype)
+        .reply(200, Array.prototype)
 
-      const response = await getAccountHistory(1)
-      deepEqual(response, [])
+      const response = await getAccountHistory(accountId)
+      deepEqual(response, Array.prototype)
     })
   })
 
@@ -290,19 +296,21 @@ test('coinbase-pro', () => {
       equal(typeof getAccountTransfers, 'function')
     })
 
-    test('fetches time and parses json response', async () => {
+    test('fetches account transfers and parses json response', async () => {
+      const accountId = uuid()
+
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
         .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
         .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
-        .get('/accounts/1/transfers')
-        .query({})
-        .reply(200, [])
+        .get('/accounts/' + accountId + '/transfers')
+        .query(Object.prototype)
+        .reply(200, Array.prototype)
 
-      const response = await getAccountTransfers(1)
-      deepEqual(response, [])
+      const response = await getAccountTransfers(accountId)
+      deepEqual(response, Array.prototype)
     })
   })
 
@@ -313,19 +321,61 @@ test('coinbase-pro', () => {
       equal(typeof getAccountHolds, 'function')
     })
 
-    test('fetches time and parses json response', async () => {
+    test('fetches account holds and parses json response', async () => {
+      const accountId = uuid()
+
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
         .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
         .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
-        .get('/accounts/1/holds')
-        .query({})
-        .reply(200, [])
+        .get('/accounts/' + accountId + '/holds')
+        .query(Object.prototype)
+        .reply(200, Array.prototype)
 
-      const response = await getAccountHolds(1)
-      deepEqual(response, [])
+      const response = await getAccountHolds(accountId)
+      deepEqual(response, Array.prototype)
+    })
+  })
+
+  test('.placeOrder', () => {
+    const {placeOrder} = require('..')
+
+    test('is of type function', () => {
+      equal(typeof placeOrder, 'function')
+    })
+
+    test('places limit buy order and parses json response', async () => {
+      const order = {side: 'buy', size: 0.01, price: 0.100, product_id: 'BTC-EUR'}
+
+      nock('https://api.pro.coinbase.com')
+        .matchHeader('user-agent', /.*/)
+        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
+        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-sign', /.{44}/)
+        .matchHeader('cb-access-timestamp', /\d{10}\..*/)
+        .post('/orders', order)
+        .reply(200, Object.prototype)
+
+      const response = await placeOrder(order)
+      deepEqual(response, Object.prototype)
+    })
+
+    test('places limit sell order and parses json response', async () => {
+      const order = {side: 'sell', size: 0.01, price: 0.100, product_id: 'BTC-EUR'}
+
+      nock('https://api.pro.coinbase.com')
+        .matchHeader('user-agent', /.*/)
+        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
+        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-sign', /.{44}/)
+        .matchHeader('cb-access-timestamp', /\d{10}\..*/)
+        .post('/orders', order)
+        .reply(200, Object.prototype)
+
+      const response = await placeOrder(order)
+      deepEqual(response, Object.prototype)
     })
   })
 })
