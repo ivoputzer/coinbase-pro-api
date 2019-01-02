@@ -21,6 +21,7 @@ test('coinbase-pro-api', () => {
       getProducts()
         .then(res => deepStrictEqual(res, []))
         .then(done)
+        .catch(done)
     })
   })
 
@@ -41,6 +42,7 @@ test('coinbase-pro-api', () => {
       getProductOrderBook('btc-eur')
         .then(res => deepStrictEqual(res, {}))
         .then(done)
+        .catch(done)
     })
   })
 
@@ -61,6 +63,7 @@ test('coinbase-pro-api', () => {
       getProductTicker('btc-eur')
         .then(res => deepStrictEqual(res, {}))
         .then(done)
+        .catch(done)
     })
   })
 
@@ -81,6 +84,7 @@ test('coinbase-pro-api', () => {
       getProductTrades('btc-eur')
         .then(res => deepStrictEqual(res, []))
         .then(done)
+        .catch(done)
     })
 
     test('handles automatic pagination', Function.prototype)
@@ -115,6 +119,7 @@ test('coinbase-pro-api', () => {
       getProductHistoricRates('btc-eur')
         .then(res => deepStrictEqual(res, []))
         .then(done)
+        .catch(done)
     })
   })
 
@@ -135,6 +140,7 @@ test('coinbase-pro-api', () => {
       getProduct24HrStats('btc-eur')
         .then(res => deepStrictEqual(res, {}))
         .then(done)
+        .catch(done)
     })
   })
 
@@ -155,6 +161,7 @@ test('coinbase-pro-api', () => {
       getCurrencies()
         .then(res => deepStrictEqual(res, []))
         .then(done)
+        .catch(done)
     })
   })
 
@@ -175,6 +182,7 @@ test('coinbase-pro-api', () => {
       getTime()
         .then(res => deepStrictEqual(res, {}))
         .then(done)
+        .catch(done)
     })
   })
 
@@ -188,8 +196,8 @@ test('coinbase-pro-api', () => {
     test('fetches coinbase accounts and parses json response', (done) => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-key', /.*/)
+        .matchHeader('cb-access-passphrase', /.*/)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/coinbase-accounts')
@@ -199,6 +207,7 @@ test('coinbase-pro-api', () => {
       getCoinbaseAccounts()
         .then(res => deepStrictEqual(res, []))
         .then(done)
+        .catch(done)
     })
   })
 
@@ -212,8 +221,8 @@ test('coinbase-pro-api', () => {
     test('fetches payment methods and parses json response', (done) => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-key', /.*/)
+        .matchHeader('cb-access-passphrase', /.*/)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/payment-methods')
@@ -223,6 +232,7 @@ test('coinbase-pro-api', () => {
       getPaymentMethods()
         .then(res => deepStrictEqual(res, []))
         .then(done)
+        .catch(done)
     })
   })
 
@@ -236,8 +246,8 @@ test('coinbase-pro-api', () => {
     test('fetches accounts and parses json response', (done) => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-key', /.*/)
+        .matchHeader('cb-access-passphrase', /.*/)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/accounts')
@@ -247,6 +257,7 @@ test('coinbase-pro-api', () => {
       getAccounts()
         .then(res => deepStrictEqual(res, []))
         .then(done)
+        .catch(done)
     })
   })
 
@@ -262,8 +273,8 @@ test('coinbase-pro-api', () => {
 
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-key', /.*/)
+        .matchHeader('cb-access-passphrase', /.*/)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/accounts/' + accountId)
@@ -273,6 +284,7 @@ test('coinbase-pro-api', () => {
       getAccount(accountId)
         .then(res => deepStrictEqual(res, {}))
         .then(done)
+        .catch(done)
     })
   })
 
@@ -288,8 +300,8 @@ test('coinbase-pro-api', () => {
 
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-key', /.*/)
+        .matchHeader('cb-access-passphrase', /.*/)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/accounts/' + accountId + '/ledger')
@@ -299,6 +311,7 @@ test('coinbase-pro-api', () => {
       getAccountHistory(accountId)
         .then(res => deepStrictEqual(res, []))
         .then(done)
+        .catch(done)
     })
   })
 
@@ -314,8 +327,8 @@ test('coinbase-pro-api', () => {
 
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-key', /.*/)
+        .matchHeader('cb-access-passphrase', /.*/)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/accounts/' + accountId + '/transfers')
@@ -325,6 +338,7 @@ test('coinbase-pro-api', () => {
       getAccountTransfers(accountId)
         .then(res => deepStrictEqual(res, []))
         .then(done)
+        .catch(done)
     })
   })
 
@@ -340,8 +354,8 @@ test('coinbase-pro-api', () => {
 
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-key', /.*/)
+        .matchHeader('cb-access-passphrase', /.*/)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/accounts/' + accountId + '/holds')
@@ -351,6 +365,7 @@ test('coinbase-pro-api', () => {
       getAccountHolds(accountId)
         .then(res => deepStrictEqual(res, []))
         .then(done)
+        .catch(done)
     })
   })
 
@@ -366,8 +381,8 @@ test('coinbase-pro-api', () => {
 
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-key', /.*/)
+        .matchHeader('cb-access-passphrase', /.*/)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .post('/orders', order)
@@ -376,6 +391,7 @@ test('coinbase-pro-api', () => {
       placeOrder(order)
         .then(res => deepStrictEqual(res, {}))
         .then(done)
+        .catch(done)
     })
 
     test('places limit sell order and parses json response', (done) => {
@@ -383,8 +399,8 @@ test('coinbase-pro-api', () => {
 
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-key', /.*/)
+        .matchHeader('cb-access-passphrase', /.*/)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .post('/orders', order)
@@ -393,6 +409,7 @@ test('coinbase-pro-api', () => {
       placeOrder(order)
         .then(res => deepStrictEqual(res, {}))
         .then(done)
+        .catch(done)
     })
   })
 
@@ -408,8 +425,8 @@ test('coinbase-pro-api', () => {
 
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-key', /.*/)
+        .matchHeader('cb-access-passphrase', /.*/)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .delete('/orders/' + orderId)
@@ -418,6 +435,7 @@ test('coinbase-pro-api', () => {
       cancelOrder(orderId)
         .then(res => deepStrictEqual(res, []))
         .then(done)
+        .catch(done)
     })
   })
 
@@ -431,8 +449,8 @@ test('coinbase-pro-api', () => {
     test('cancels open orders and parses json response', (done) => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-key', /.*/)
+        .matchHeader('cb-access-passphrase', /.*/)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .delete('/orders')
@@ -442,6 +460,7 @@ test('coinbase-pro-api', () => {
       cancelOrders()
         .then(res => deepStrictEqual(res, []))
         .then(done)
+        .catch(done)
     })
   })
 
@@ -455,8 +474,8 @@ test('coinbase-pro-api', () => {
     test('fetches orders and parses json response', (done) => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-key', /.*/)
+        .matchHeader('cb-access-passphrase', /.*/)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/orders')
@@ -466,6 +485,7 @@ test('coinbase-pro-api', () => {
       getOrders()
         .then(res => deepStrictEqual(res, []))
         .then(done)
+        .catch(done)
     })
   })
 
@@ -481,8 +501,8 @@ test('coinbase-pro-api', () => {
 
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-key', /.*/)
+        .matchHeader('cb-access-passphrase', /.*/)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/orders/' + orderId)
@@ -492,6 +512,7 @@ test('coinbase-pro-api', () => {
       getOrder(orderId)
         .then(res => deepStrictEqual(res, {}))
         .then(done)
+        .catch(done)
     })
   })
 
@@ -505,8 +526,8 @@ test('coinbase-pro-api', () => {
     test('fetches orders and parses json response', (done) => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-key', /.*/)
+        .matchHeader('cb-access-passphrase', /.*/)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/orders')
@@ -516,6 +537,7 @@ test('coinbase-pro-api', () => {
       getOrders()
         .then(res => deepStrictEqual(res, []))
         .then(done)
+        .catch(done)
     })
   })
 
@@ -529,8 +551,8 @@ test('coinbase-pro-api', () => {
     test('fetches fills and parses json response', (done) => {
       nock('https://api.pro.coinbase.com')
         .matchHeader('user-agent', /.*/)
-        .matchHeader('cb-access-key', process.env.npm_config_coinbase_pro_api_key)
-        .matchHeader('cb-access-passphrase', process.env.npm_config_coinbase_pro_api_passphrase)
+        .matchHeader('cb-access-key', /.*/)
+        .matchHeader('cb-access-passphrase', /.*/)
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .get('/fills')
@@ -540,6 +562,7 @@ test('coinbase-pro-api', () => {
       getFills()
         .then(res => deepStrictEqual(res, []))
         .then(done)
+        .catch(done)
     })
   })
 })
