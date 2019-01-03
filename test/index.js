@@ -420,6 +420,7 @@ test('coinbase-pro-api', () => {
         .matchHeader('cb-access-sign', /.{44}/)
         .matchHeader('cb-access-timestamp', /\d{10}\..*/)
         .delete('/orders/' + orderId)
+        .query({})
         .reply(200, [])
 
       cancelOrder(orderId)

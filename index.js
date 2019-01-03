@@ -82,17 +82,15 @@ exports.placeOrder = (data, { parse } = JSON, { stringify } = JSON, { request } 
   body: stringify(data)
 }).then(parse)
 
-exports.cancelOrder = (orderId, { parse } = JSON, { stringify } = JSON, { request } = client) => request({
+exports.cancelOrder = (orderId, query = {}, { parse } = JSON, { stringify } = querystring, { request } = client) => request({
   method: 'delete',
-  path: '/orders/' + orderId
+  path: '/orders/' + orderId + '?' + stringify(query)
 }).then(parse)
 
 exports.cancelOrders = (query = {}, { parse } = JSON, { stringify } = querystring, { request } = client) => request({
   method: 'delete',
   path: '/orders?' + stringify(query)
 }).then(parse)
-
-exports.cancelAllOrders = Function.prototype
 
 exports.getOrders = (query = {}, { parse } = JSON, { stringify } = querystring, { request } = client) => request({
   method: 'get',
