@@ -114,23 +114,12 @@ exports.getOrder = (orderId, query = {}, { parse } = JSON, { stringify } = query
   path: '/orders/' + orderId + '?' + stringify(query)
 }).then(parse)
 
-exports.getOrders = (query = {}, { parse } = JSON, { stringify } = querystring, { request } = client) => request({
-  method: 'get',
-  path: '/orders?' + stringify(query)
-}).then(parse)
-
 exports.getFills = (query = {}, { parse } = JSON, { stringify } = querystring, { request } = client) => request({
   method: 'get',
   path: '/fills?' + stringify(query)
 }).then(parse)
 
-// exports.repay = Function.prototype
-// exports.marginTransfer = Function.prototype
-// exports.closePosition = Function.prototype
-// exports.convert = Function.prototype
-
-// - [ ] getOrders
-// - [ ] getOrder
-// - [ ] getFills
-// - [ ] getFundings
-// - [ ] getTrailingVolume
+exports.repay = Function.prototype
+exports.marginTransfer = Function.prototype
+exports.closePosition = Function.prototype
+exports.convert = Function.prototype
