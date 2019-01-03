@@ -21,11 +21,6 @@ exports.getProductTrades = (productId, query = {}, { parse } = JSON, { stringify
   path: '/products/' + productId + '/trades?' + stringify(query)
 }).then(parse)
 
-// todo
-// the following method could be replaced with a recursive promise implementation
-// on exports.getProductTrades that takes care of pagination and rate limits.
-exports.getProductTradeStream = Function.prototype
-
 exports.getProductHistoricRates = (productId, query = {}, { parse } = JSON, { stringify } = querystring, { request } = client) => request({
   method: 'get',
   path: '/products/' + productId + '/candles?' + stringify(query)
@@ -81,11 +76,6 @@ exports.getAccountHolds = (accountId, query = {}, { parse } = JSON, { stringify 
   path: '/accounts/' + accountId + '/holds?' + stringify(query)
 }).then(parse)
 
-// todo
-// the following methods can be replaced by exports.placeOrder for now
-exports.buy = Function.prototype
-exports.sell = Function.prototype
-
 exports.placeOrder = (data, { parse } = JSON, { stringify } = JSON, { request } = client) => request({
   method: 'post',
   path: '/orders',
@@ -119,7 +109,8 @@ exports.getFills = (query = {}, { parse } = JSON, { stringify } = querystring, {
   path: '/fills?' + stringify(query)
 }).then(parse)
 
-exports.repay = Function.prototype
-exports.marginTransfer = Function.prototype
-exports.closePosition = Function.prototype
-exports.convert = Function.prototype
+exports.convert = (data, { parse } = JSON, { stringify } = JSON, { request } = client) => request({
+  method: 'post',
+  path: '/conversions',
+  body: stringify(data)
+}).then(parse)

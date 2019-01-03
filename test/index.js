@@ -92,16 +92,6 @@ test('coinbase-pro-api', () => {
     test('handles rate limits for multiple requests', Function.prototype)
   })
 
-  test('.getProductTradeStream', () => {
-    const { getProductTradeStream } = require('..')
-
-    test('is of type function', () => {
-      strictEqual(typeof getProductTradeStream, 'function')
-    })
-
-    test('fetches product trades and parses parses json response(s) into readable stream', Function.prototype)
-  })
-
   test('.getProductHistoricRates', () => {
     const { getProductHistoricRates } = require('..')
 
@@ -561,6 +551,32 @@ test('coinbase-pro-api', () => {
 
       getFills()
         .then(res => deepStrictEqual(res, []))
+        .then(done)
+        .catch(done)
+    })
+  })
+
+  test('.convert', () => {
+    const { convert } = require('..')
+
+    test('is of type function', () => {
+      strictEqual(typeof convert, 'function')
+    })
+
+    test('places limit buy order and parses json response', (done) => {
+      const conversion = { from: 'USD', to: 'USDC', amount: 1 }
+
+      nock('https://api.pro.coinbase.com')
+        .matchHeader('user-agent', /.*/)
+        .matchHeader('cb-access-key', /.*/)
+        .matchHeader('cb-access-passphrase', /.*/)
+        .matchHeader('cb-access-sign', /.{44}/)
+        .matchHeader('cb-access-timestamp', /\d{10}\..*/)
+        .post('/conversions', conversion)
+        .reply(200, {})
+
+      convert(conversion)
+        .then(res => deepStrictEqual(res, {}))
         .then(done)
         .catch(done)
     })
