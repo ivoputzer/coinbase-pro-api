@@ -10,7 +10,7 @@ Lightweight [Coinbase Pro API](https://docs.pro.coinbase.com) implementation.
 [![node](https://img.shields.io/badge/node-6%2B-blue.svg?style=for-the-badge)](https://nodejs.org/docs/v6.0.0/api)
 [![version](https://img.shields.io/npm/v/coinbase-pro-api.svg?style=for-the-badge&colorB=007EC6)](https://www.npmjs.com/package/coinbase-pro-api)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge&colorB=007EC6)](https://spdx.org/licenses/MIT)
-[![minzip](https://img.shields.io/bundlephobia/minzip/coinbase-pro-api.svg?style=for-the-badge)](https://bundlephobia.com/scan-results?packages=coinbase-pro-api)
+<!-- [![minzip](https://img.shields.io/bundlephobia/minzip/coinbase-pro-api.svg?style=for-the-badge)](https://bundlephobia.com/scan-results?packages=coinbase-pro-api) -->
 [![downloads](https://img.shields.io/npm/dt/coinbase-pro-api.svg?style=for-the-badge&colorB=007EC6)](https://www.npmjs.com/package/coinbase-pro-api)
 
 ### Installation
