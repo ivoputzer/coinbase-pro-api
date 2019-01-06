@@ -3,6 +3,10 @@
   "version": "0.0.2",
   "description": "lightweight coinbase pro api implementation",
   "main": "index.js",
+  "config": {
+    "coinbase_pro_api_hostname": "api.pro.coinbase.com",
+    "coinbase_pro_api_sandbox_hostname": "api-public.sandbox.pro.coinbase.com"
+  },
   "standard": {
     "global": [
       "test"
