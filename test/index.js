@@ -1,8 +1,8 @@
 const nock = require('nock')
 
 test('coinbase-pro-api', () => {
-  const { uuid } = require('m.uuid')
   const { strictEqual, deepStrictEqual } = require('assert')
+  const { uuid } = require('m.uuid')
 
   test('.getProducts', () => {
     const { getProducts } = require('..')
