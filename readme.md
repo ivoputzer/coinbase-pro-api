@@ -10,24 +10,20 @@ Lightweight [Coinbase Pro API](https://docs.pro.coinbase.com) implementation.
 [![node](https://img.shields.io/badge/node-6%2B-blue.svg?style=for-the-badge)](https://nodejs.org/docs/v6.0.0/api)
 [![version](https://img.shields.io/npm/v/coinbase-pro-api.svg?style=for-the-badge&colorB=007EC6)](https://www.npmjs.com/package/coinbase-pro-api)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge&colorB=007EC6)](https://spdx.org/licenses/MIT)
-<!-- [![minzip](https://img.shields.io/bundlephobia/minzip/coinbase-pro-api.svg?style=for-the-badge)](https://bundlephobia.com/scan-results?packages=coinbase-pro-api) -->
+[![minzip](https://img.shields.io/bundlephobia/minzip/coinbase-pro-api.svg?style=for-the-badge)](https://bundlephobia.com/scan-results?packages=coinbase-pro-api)
 [![downloads](https://img.shields.io/npm/dt/coinbase-pro-api.svg?style=for-the-badge&colorB=007EC6)](https://www.npmjs.com/package/coinbase-pro-api)
 
-### Installation
+## Installation
 ```sh
 npm install coinbase-pro-api
 ```
 
-### Usage
+## Usage
 This library allows you to use both public and private endpoints as well as the [sandbox environment](https://docs.pro.coinbase.com/#sandbox) for testing connectivity and web trading; You can learn about query parameters and responses of each rest endpoint in the [official documentation](https://docs.pro.coinbase.com).
 
 Configurations such as credentials and environments are read following the [npm configuration guideline](https://docs.npmjs.com/files/npmrc.html) and can be set either using an `.npmrc` file or by exporting correct environment vartiables.
 
-
-
-
-
-### Public Endpoints
+## Public Endpoints
 Public endpoints do not require authentication and can be used right away without further configuration.
 
 #### .getProducts([query[, parser=JSON[, stringifier=QS]]])
@@ -86,11 +82,7 @@ getTime()
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#time)
 
-
-
-
-
-### Private Endpoints
+## Private Endpoints
 The private endpoints require authentication. You will need to configure your `coinbase-pro-api` installation by providing a valid `.npmrc` configuration as follows:
 
 ```ini
@@ -208,3 +200,16 @@ const {convert} = require('coinbase-pro-api')
 convert({from: 'USD', to: 'USDC', amount: '100' })
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#create-conversion)
+
+## Donations
+If you find value in what I do then feel free to make a donation, it will be really appreciated! Maintaining projects isn't effortless nor free and if you'd like to kick in and help me cover those expenses, that would be awesome. If you don't, no problem; You can use my software completely free of charge and without limitation for any purpose you want ;)
+
+- **BTC** `3BNL7UnYmByrdEguoEnA7S95WzdDYLmKuS`
+- **LTC** `MEgxjro7E6z8Mfy4Uy8xaJPrskdwmrCers`
+- **BCH** `qrtl83z594m7g4nv390xdg5mg7tywuwq5vzlsa82dp`
+- **ETH** `0xeED2C60dd83e77F5650962E653b2a6F26A5c2f26`
+- **ETC** `0x5B4224b376C0a32B70B0e25F6aEeCfc2d0131703`
+- **ZRX** `0x345df25C52B81E045Bfb3C21b15343c4D114e43e`
+- **BAT** `0xB23Bb1933bDF676502426AdcA2D7B3E0Ed18AfDF`
+- **ZEC** `t1h78dUWEY9hA2UZVyNazbgAfZNmicEK6qA`
+- **USDC** `0x7fb93FfBcFa9A537ddFaC9678b1C27DF776eE626`
