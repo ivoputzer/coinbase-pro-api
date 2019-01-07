@@ -16,7 +16,8 @@
   "devDependencies": {
     "m.test": "0.0.57",
     "m.uuid": "^1.0.0",
-    "nock": "^10.0.5"
+    "nock": "^10.0.5",
+    "sinon": "^7.2.2"
   },
   "scripts": {
     "node": "node",
