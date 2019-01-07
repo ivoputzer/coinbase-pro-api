@@ -403,6 +403,31 @@ test('coinbase-pro-api', () => {
     })
   })
 
+  test('.getTrailingVolume', () => {
+    const { getTrailingVolume } = require('..')
+
+    test('is of type function', () => {
+      strictEqual(typeof getTrailingVolume, 'function')
+    })
+
+    test('fetches user trailing volume parses json response', (done) => {
+      nock('https://api.pro.coinbase.com')
+        .matchHeader('user-agent', /.*/)
+        .matchHeader('cb-access-key', /.*/)
+        .matchHeader('cb-access-passphrase', /.*/)
+        .matchHeader('cb-access-sign', /.{44}/)
+        .matchHeader('cb-access-timestamp', /\d{10}\..*/)
+        .get('/users/self/trailing-volume')
+        .query({})
+        .reply(200, [])
+
+      getTrailingVolume()
+        .then(res => deepStrictEqual(res, []))
+        .then(done)
+        .catch(done)
+    })
+  })
+
   test('.cancelOrder', () => {
     const { cancelOrder } = require('..')
 

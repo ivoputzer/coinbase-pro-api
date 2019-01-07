@@ -82,6 +82,11 @@ exports.placeOrder = (data, { parse } = JSON, { stringify } = JSON, { env } = pr
   body: stringify(data)
 }, env).then(toString).then(parse)
 
+exports.getTrailingVolume = (query = {}, { parse } = JSON, { stringify } = querystring, { env } = process, { toString, request } = client) => request({
+  method: 'get',
+  path: '/users/self/trailing-volume?' + stringify(query)
+}, env).then(toString).then(parse)
+
 exports.cancelOrder = (orderId, query = {}, { parse } = JSON, { stringify } = querystring, { env } = process, { toString, request } = client) => request({
   method: 'delete',
   path: '/orders/' + orderId + '?' + stringify(query)
