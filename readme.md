@@ -13,6 +13,20 @@ Lightweight [Coinbase Pro API](https://docs.pro.coinbase.com) implementation.
 [![minzip](https://img.shields.io/bundlephobia/minzip/coinbase-pro-api.svg?style=for-the-badge)](https://bundlephobia.com/scan-results?packages=coinbase-pro-api)
 [![downloads](https://img.shields.io/npm/dt/coinbase-pro-api.svg?style=for-the-badge&colorB=007EC6)](https://www.npmjs.com/package/coinbase-pro-api)
 
+## Donations
+If you find value in what I do then feel free to make a donation, it will be really appreciated! Maintaining projects isn't effortless nor free and if you'd like to kick in and help me cover those expenses, that would be awesome. If you don't, no problem; You can use my software completely free of charge and without limitation for any purpose you want ;)
+
+- **BTC** `3BNL7UnYmByrdEguoEnA7S95WzdDYLmKuS`
+- **LTC** `MEgxjro7E6z8Mfy4Uy8xaJPrskdwmrCers`
+- **BCH** `qrtl83z594m7g4nv390xdg5mg7tywuwq5vzlsa82dp`
+- **ETH** `0xeED2C60dd83e77F5650962E653b2a6F26A5c2f26`
+- **ETC** `0x5B4224b376C0a32B70B0e25F6aEeCfc2d0131703`
+- **ZRX** `0x345df25C52B81E045Bfb3C21b15343c4D114e43e`
+- **BAT** `0xB23Bb1933bDF676502426AdcA2D7B3E0Ed18AfDF`
+- **ZEC** `t1h78dUWEY9hA2UZVyNazbgAfZNmicEK6qA`
+- **USDC** `0x7fb93FfBcFa9A537ddFaC9678b1C27DF776eE626`
+
+
 ## Installation
 ```sh
 npm install coinbase-pro-api
@@ -200,16 +214,3 @@ const {convert} = require('coinbase-pro-api')
 convert({from: 'USD', to: 'USDC', amount: '100' })
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#create-conversion)
-
-## Donations
-If you find value in what I do then feel free to make a donation, it will be really appreciated! Maintaining projects isn't effortless nor free and if you'd like to kick in and help me cover those expenses, that would be awesome. If you don't, no problem; You can use my software completely free of charge and without limitation for any purpose you want ;)
-
-- **BTC** `3BNL7UnYmByrdEguoEnA7S95WzdDYLmKuS`
-- **LTC** `MEgxjro7E6z8Mfy4Uy8xaJPrskdwmrCers`
-- **BCH** `qrtl83z594m7g4nv390xdg5mg7tywuwq5vzlsa82dp`
-- **ETH** `0xeED2C60dd83e77F5650962E653b2a6F26A5c2f26`
-- **ETC** `0x5B4224b376C0a32B70B0e25F6aEeCfc2d0131703`
-- **ZRX** `0x345df25C52B81E045Bfb3C21b15343c4D114e43e`
-- **BAT** `0xB23Bb1933bDF676502426AdcA2D7B3E0Ed18AfDF`
-- **ZEC** `t1h78dUWEY9hA2UZVyNazbgAfZNmicEK6qA`
-- **USDC** `0x7fb93FfBcFa9A537ddFaC9678b1C27DF776eE626`
