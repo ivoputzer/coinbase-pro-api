@@ -73,6 +73,18 @@ test('coinbase-pro-api/client', () => {
       ok(headers.hasOwnProperty('CB-ACCESS-SIGN'))
       ok(headers.hasOwnProperty('CB-ACCESS-TIMESTAMP'))
     })
+
+    test('evn argument is allowed to be empty', () => {
+      const headers = headersFor({ method: 'get' }, {})
+
+      ok(headers.hasOwnProperty('User-Agent'))
+      ok(headers.hasOwnProperty('Accept'))
+      ok(headers.hasOwnProperty('Content-Type'))
+      ok(headers.hasOwnProperty('CB-ACCESS-KEY'))
+      ok(headers.hasOwnProperty('CB-ACCESS-PASSPHRASE'))
+      ok(headers.hasOwnProperty('CB-ACCESS-SIGN'))
+      ok(headers.hasOwnProperty('CB-ACCESS-TIMESTAMP'))
+    })
   })
 
   test('.toString', () => {
