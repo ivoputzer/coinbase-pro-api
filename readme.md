@@ -1,6 +1,6 @@
 coinbase-pro-api
 ===
-Lightweight [Coinbase Pro API](https://docs.pro.coinbase.com) implementation.
+Lightweight [Coinbase Pro API](https://docs.pro.coinbase.com/#api) implementation.
 
 [![travis](https://img.shields.io/travis/ivoputzer/coinbase-pro-api.svg?style=for-the-badge)](https://travis-ci.org/ivoputzer/coinbase-pro-api)
 [![dependencies](https://img.shields.io/badge/dependencies-none-blue.svg?style=for-the-badge&colorB=44CC11)](package.json)
@@ -33,9 +33,7 @@ npm install coinbase-pro-api
 ```
 
 ## Usage
-This library allows you to use both public and private endpoints as well as the [sandbox environment](https://docs.pro.coinbase.com/#sandbox) for testing connectivity and web trading; You can learn about query parameters and responses of each rest endpoint in the [official documentation](https://docs.pro.coinbase.com).
-
-Configurations such as credentials and environments are read following the [npm configuration guideline](https://docs.npmjs.com/files/npmrc.html) and can be set either using an `.npmrc` file or by exporting correct environment vartiables.
+This library allows you to use both [public](#public-endpoints) and [private](#private-endpoints) endpoints as well as the [sandbox environment](https://docs.pro.coinbase.com/#sandbox) for testing connectivity and trading. You can learn about query parameters and responses of each endpoint in the [official documentation](https://docs.pro.coinbase.com).
 
 ## Public Endpoints
 Public endpoints do not require authentication and can be used right away without further configuration.
@@ -97,20 +95,7 @@ getTime()
 [» query params and responses](https://docs.pro.coinbase.com/#time)
 
 ## Private Endpoints
-The private endpoints require authentication. You will need to configure your `coinbase-pro-api` installation by providing a valid `.npmrc` configuration as follows:
-
-```ini
-coinbase-pro-api:hostname="api.pro.coinbase.com"
-coinbase-pro-api:key="replace with api key"
-coinbase-pro-api:passphrase="replace with api passphrase"
-coinbase-pro-api:secret="replace with api secret"
-```
-
-The same result can be obtained by setting the following environment variables:
-- `npm_config_coinbase_pro_api_hostname`
-- `npm_config_coinbase_pro_api_key`
-- `npm_config_coinbase_pro_api_passphrase`
-- `npm_config_coinbase_pro_api_secret`
+The private endpoints require authentication. You will need to configure your `coinbase-pro-api` installation by providing a configuration.
 
 #### .getCoinbaseAccounts([query[, parser=JSON[, stringifier=QS]]])
 ```js
@@ -214,3 +199,40 @@ const {convert} = require('coinbase-pro-api')
 convert({from: 'USD', to: 'USDC', amount: '100' })
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#create-conversion)
+
+## Configuration
+Configurations such as credentials and environments follow the [npm configuration guideline](https://docs.npmjs.com/files/npmrc.html). Configurations can be set via [command line](#command-line), [environment variables](#environment-variables) and [`npmrc` files](#npmrc). To create an api key unique to your trading account refer to [this guide](https://support.pro.coinbase.com/customer/en/portal/articles/2945320-how-do-i-create-an-api-key-for-coinbase-pro).
+
+- `sandbox` (optional) can be set to either `true`, `yes` and `1` to switch to sandbox environment;
+- `hostname` (optional) allows to override default coinbase-pro hostname;
+- `key` (mandatory for private endpoints only) coinbase-pro api key unique to your trading account;
+- `passphrase` (mandatory for private endpoints only) coinbase-pro api passphrase unique to your trading account;
+- `secret` (mandatory for private endpoints only) coinbase-pro api secret unique to your trading account;
+
+#### command line
+```shell
+npm config set coinbase-pro-api:sandbox false
+npm config set coinbase-pro-api:hostname api.pro.coinbase.com
+npm config set coinbase-pro-api:key key
+npm config set coinbase-pro-api:passphrase passphrase
+npm config set coinbase-pro-api:secret secret
+```
+
+#### environment variables
+```shell
+env npm_config_coinbase_pro_api_sandbox="false" \
+    npm_config_coinbase_pro_api_hostname="api.pro.coinbase.com" \
+    npm_config_coinbase_pro_api_key="key" \
+    npm_config_coinbase_pro_api_passphrase="passphrase" \
+    npm_config_coinbase_pro_api_secret="secret" \
+    node script.js
+```
+
+#### npmrc
+```ini
+coinbase-pro-api:sandbox="false"
+coinbase-pro-api:hostname="api.pro.coinbase.com"
+coinbase-pro-api:key="key"
+coinbase-pro-api:passphrase="passphrase"
+coinbase-pro-api:secret="secret"
+```
