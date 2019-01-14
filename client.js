@@ -24,8 +24,15 @@ exports.toString = (stream, chunks = [], encoding = 'utf8', { concat } = Buffer)
   })
 }
 
-exports.hostnameFor = ({ npm_config_coinbase_pro_api_hostname, npm_config_coinbase_pro_api_sandbox } = process.env, { coinbase_pro_api_sandbox_hostname, coinbase_pro_api_hostname } = info.config) => {
-  return npm_config_coinbase_pro_api_hostname || (['true', '1'].includes(npm_config_coinbase_pro_api_sandbox) ? coinbase_pro_api_sandbox_hostname : coinbase_pro_api_hostname)
+exports.parseBoolean = (string) => {
+  return ['yes', 'true', '1'].includes(string)
+}
+
+exports.hostnameFor = ({ npm_config_coinbase_pro_api_hostname, npm_config_coinbase_pro_api_sandbox } = process.env, { coinbase_pro_api_sandbox_hostname, coinbase_pro_api_hostname } = info.config, { parseBoolean } = exports) => {
+  if (npm_config_coinbase_pro_api_hostname) return npm_config_coinbase_pro_api_hostname
+  return parseBoolean(npm_config_coinbase_pro_api_sandbox)
+    ? coinbase_pro_api_sandbox_hostname
+    : coinbase_pro_api_hostname
 }
 
 exports.headersFor = (options, { npm_config_coinbase_pro_api_key = String.prototype, npm_config_coinbase_pro_api_passphrase = String.prototype, npm_config_coinbase_pro_api_secret = String.prototype } = process.env, { signatureFor } = auth, { name, version } = info) => {
