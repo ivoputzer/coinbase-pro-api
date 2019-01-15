@@ -50,7 +50,7 @@ jobs:
       api_key: $GITHUB_API_KEY
       on:
         repo: $TRAVIS_REPO_SLUG
-        # condition:
-        # - $NPM_PACKAGE_VERSION != $NPM_RELEASE_VERSION
+        condition:
+        - $NPM_PACKAGE_VERSION != $NPM_RELEASE_VERSION
 notifications:
   email: false
