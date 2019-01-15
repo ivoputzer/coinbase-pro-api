@@ -1,11 +1,11 @@
-sudo: false
 language: node_js
 if: tag IS blank
+sudo: false
 git:
   depth: 1
 node_js:
 - 11
-# - 10
+- 10
 # - 9
 # - 8
 # - 7
@@ -41,22 +41,20 @@ jobs:
     if: branch = master
     install: ignore
     script:
-    - export NPM_PACKAGE=$(npm --silent pack)
+    - npm --silent pack
     after_success:
-    - NPM_VERSION_TAR=${NPM_PACKAGE##*-}
-    - export NPM_PACKAGE_VERSION=${NPM_VERSION_TAR%.*}
+    - export NPM_PACKAGE_VERSION=$(npm --silent run node -- --print process.env.npm_package_version)
     - export NPM_RELEASE_VERSION=$(npm --silent view $PWD version)
-    - env
     - git tag --annotate $NPM_PACKAGE_VERSION --message $NPM_PACKAGE_VERSION
     - git describe --tags --exact-match
     deploy:
-
     - provider: npm
       email: ivo.putzer@gmail.com
       api_key: $NPM_TOKEN
       on:
         repo: $TRAVIS_REPO_SLUG
-
+        condition:
+        - $NPM_PACKAGE_VERSION != $NPM_RELEASE_VERSION
     - provider: releases
       skip_cleanup: true
       overwrite: false
@@ -64,7 +62,7 @@ jobs:
       api_key: $GITHUB_API_KEY
       on:
         repo: $TRAVIS_REPO_SLUG
-        # condition:
-        # - $NPM_RELEASE_VERSION != $(npm --silent view $PWD version)
+        condition:
+        - $NPM_PACKAGE_VERSION != $NPM_RELEASE_VERSION
 notifications:
   email: false
