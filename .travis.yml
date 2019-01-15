@@ -4,12 +4,12 @@ git:
   depth: 1
 node_js:
 - 11
-- 10
-- 9
-- 8
-- 7
-- 6
-- 5
+# - 10
+# - 9
+# - 8
+# - 7
+# - 6
+# - 5
 cache:
   directories:
   - $HOME/.npm
@@ -45,14 +45,17 @@ jobs:
     - NPM_VERSION_TAR=${NPM_PACKAGE##*-}
     - export NPM_PACKAGE_VERSION=${NPM_VERSION_TAR%.*}
     - export NPM_RELEASE_VERSION=$(npm --silent view $PWD version)
+    - env
     - git tag --annotate $NPM_PACKAGE_VERSION --message $NPM_PACKAGE_VERSION
     - git describe --tags --exact-match
     deploy:
+
     - provider: npm
       email: ivo.putzer@gmail.com
       api_key: $NPM_TOKEN
       on:
         repo: $TRAVIS_REPO_SLUG
+
     - provider: releases
       skip_cleanup: true
       overwrite: false
@@ -60,7 +63,7 @@ jobs:
       api_key: $GITHUB_API_KEY
       on:
         repo: $TRAVIS_REPO_SLUG
-        condition:
-        - $NPM_RELEASE_VERSION != $(npm --silent view $PWD version)
+        # condition:
+        # - $NPM_RELEASE_VERSION != $(npm --silent view $PWD version)
 notifications:
   email: false
