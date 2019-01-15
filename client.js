@@ -3,7 +3,7 @@
 const https = require('https')
 
 const info = require('./package')
-const auth = require('./auth')
+const util = require('./util')
 
 exports.request = (options, env = process.env, { request } = https, { hostnameFor, headersFor, toString } = exports) => {
   return new Promise((resolve, reject) => {
@@ -35,7 +35,7 @@ exports.hostnameFor = ({ npm_config_coinbase_pro_api_hostname, npm_config_coinba
     : coinbase_pro_api_hostname
 }
 
-exports.headersFor = (options, { npm_config_coinbase_pro_api_key = String.prototype, npm_config_coinbase_pro_api_passphrase = String.prototype, npm_config_coinbase_pro_api_secret = String.prototype } = process.env, { signatureFor } = auth, { name, version } = info) => {
+exports.headersFor = (options, { npm_config_coinbase_pro_api_key = String.prototype, npm_config_coinbase_pro_api_passphrase = String.prototype, npm_config_coinbase_pro_api_secret = String.prototype } = process.env, { signatureFor } = util, { name, version } = info) => {
   const timestamp = 1e-3 * Date.now() // fixme: not sure if timestamp should be created here
   return {
     'User-Agent': name + '/' + version,

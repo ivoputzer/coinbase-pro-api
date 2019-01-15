@@ -1,6 +1,6 @@
 {
   "name": "coinbase-pro-api",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "lightweight coinbase pro api implementation",
   "main": "index.js",
   "config": {

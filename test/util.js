@@ -1,8 +1,8 @@
-test('coinbase-pro-api/auth', () => {
+test('coinbase-pro-api/util', () => {
   const { ok, strictEqual, deepStrictEqual } = require('assert')
 
   test('.configurationFor', () => {
-    const { configurationFor } = require('../auth')
+    const { configurationFor } = require('../util')
 
     test('is callable', () => {
       deepStrictEqual(typeof configurationFor, 'function')
@@ -37,7 +37,7 @@ test('coinbase-pro-api/auth', () => {
   })
 
   test('.signatureFor', () => {
-    const { signatureFor } = require('../auth')
+    const { signatureFor } = require('../util')
 
     test('is callable', () => {
       deepStrictEqual(typeof signatureFor, 'function')
