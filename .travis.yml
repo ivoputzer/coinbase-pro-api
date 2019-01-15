@@ -11,9 +11,6 @@ node_js:
 # - 7
 # - 6
 # - 5
-cache:
-  directories:
-  - $HOME/.npm
 jobs:
   allow_failures:
   - node_js: 5
@@ -30,13 +27,6 @@ jobs:
       skip_cleanup: true
       script:
       - npx nyc report --reporter=text-lcov | npx coveralls --verbose
-    - provider: pages
-      skip_cleanup: true
-      local_dir: coverage/lcov-report
-      github_token: $GITHUB_TOKEN
-      on:
-        repo: $TRAVIS_REPO_SLUG
-        branch: master
   - stage: push
     if: branch = master
     install: ignore
