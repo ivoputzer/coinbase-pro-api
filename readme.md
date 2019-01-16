@@ -3,7 +3,7 @@ coinbase-pro-api
 Lightweight [Coinbase Pro API](https://docs.pro.coinbase.com/#api) implementation.
 
 [![travis](https://img.shields.io/travis/ivoputzer/coinbase-pro-api.svg?style=for-the-badge)](https://travis-ci.org/ivoputzer/coinbase-pro-api)
-[![dependencies](https://img.shields.io/badge/dependencies-none-blue.svg?style=for-the-badge&colorB=44CC11)](package.json)
+[![dependencies](https://img.shields.io/badge/dependencies-none-blue.svg?style=for-the-badge&colorB=44CC11)](https://www.npmjs.com/package/coinbase-pro-api?activeTab=dependencies)
 [![coverage status](https://img.shields.io/coveralls/ivoputzer/coinbase-pro-api.svg?style=for-the-badge)](https://coveralls.io/github/ivoputzer/coinbase-pro-api?branch=master)
 [![linter](https://img.shields.io/badge/coding%20style-standard-brightgreen.svg?style=for-the-badge)](http://standardjs.com/)
 
