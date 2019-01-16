@@ -286,7 +286,7 @@ const util = require('coinbase-pro-api/client')
 #### .request(options[, env])
 This utility wraps [https.request](https://nodejs.org/api/https.html#https_https_request_options_callback) and returns a promise that resolves into [https.ClientRequest](https://nodejs.org/api/http.html#http_class_http_clientrequest).
 
-```
+```js
 const { request } = require('coinbase-pro-api/client')
 
 request({ method: 'get', path: '/products' })
