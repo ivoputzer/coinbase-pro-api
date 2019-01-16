@@ -38,58 +38,58 @@ This library allows you to use both [public](#public-endpoints) and [private](#p
 ## Public Endpoints
 Public endpoints do not require authentication and can be used right away without further configuration.
 
-#### .getProducts([query[, parser=JSON[, stringifier=QS]]])
+#### .getProducts([query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {getProducts} = require('coinbase-pro-api')
+const { getProducts } = require('coinbase-pro-api')
 getProducts()
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#get-products)
 
-#### .getProductOrderBook(productId[, query[, parser=JSON[, stringifier=QS]]])
+#### .getProductOrderBook(productId[, query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {getProductOrderBook} = require('coinbase-pro-api')
+const { getProductOrderBook } = require('coinbase-pro-api')
 getProductOrderBook('BTC-EUR', { level: 3 })
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#get-product-order-book)
 
-#### .getProductTicker(productId[, query[, parser=JSON[, stringifier=QS]]])
+#### .getProductTicker(productId[, query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {getProductTicker} = require('coinbase-pro-api')
+const { getProductTicker } = require('coinbase-pro-api')
 getProductTicker('BTC-EUR')
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#get-product-ticker)
 
-#### .getProductTrades(productId[, query[, parser=JSON[, stringifier=QS]]])
+#### .getProductTrades(productId[, query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {getProductTrades} = require('coinbase-pro-api')
+const { getProductTrades } = require('coinbase-pro-api')
 getProductTrades('BTC-EUR', { after: 1000 })
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#get-trades)
 
-#### .getProductHistoricRates(productId[, query[, parser=JSON[, stringifier=QS]]])
+#### .getProductHistoricRates(productId[, query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {getProductHistoricRates} = require('coinbase-pro-api')
+const { getProductHistoricRates } = require('coinbase-pro-api')
 getProductHistoricRates('BTC-EUR', { granularity: 3600 })
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#get-historic-rates)
 
-#### .getProduct24HrStats(productId[, query[, parser=JSON[, stringifier=QS]]])
+#### .getProduct24HrStats(productId[, query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {getProduct24HrStats} = require('coinbase-pro-api')
+const { getProduct24HrStats } = require('coinbase-pro-api')
 getProduct24HrStats('BTC-EUR')
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#get-24hr-stats)
 
-#### .getCurrencies([query[, parser=JSON[, stringifier=QS]]])
+#### .getCurrencies([query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {getCurrencies} = require('coinbase-pro-api')
+const { getCurrencies } = require('coinbase-pro-api')
 getCurrencies()
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#get-currencies)
 
-#### .getTime([query[, parser=JSON[, stringifier=QS]]])
+#### .getTime([query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {getTime} = require('coinbase-pro-api')
+const { getTime } = require('coinbase-pro-api')
 getTime()
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#time)
@@ -97,58 +97,58 @@ getTime()
 ## Private Endpoints
 The private endpoints require authentication. You will need to configure your `coinbase-pro-api` installation by providing a configuration.
 
-#### .getCoinbaseAccounts([query[, parser=JSON[, stringifier=QS]]])
+#### .getCoinbaseAccounts([query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {getCoinbaseAccounts} = require('coinbase-pro-api')
+const { getCoinbaseAccounts } = require('coinbase-pro-api')
 getCoinbaseAccounts()
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#coinbase-accounts)
 
-#### .getPaymentMethods([query[, parser=JSON[, stringifier=QS]]])
+#### .getPaymentMethods([query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {getPaymentMethods} = require('coinbase-pro-api')
+const { getPaymentMethods } = require('coinbase-pro-api')
 getPaymentMethods()
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#payment-methods)
 
-#### .getAccounts([query[, parser=JSON[, stringifier=QS]]])
+#### .getAccounts([query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {getAccounts} = require('coinbase-pro-api')
+const { getAccounts } = require('coinbase-pro-api')
 getAccounts()
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#list-accounts)
 
-#### .getAccount(accountId[, query[, parser=JSON[, stringifier=QS]]])
+#### .getAccount(accountId[, query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {getAccount} = require('coinbase-pro-api')
+const { getAccount } = require('coinbase-pro-api')
 getAccount('7d0f7d8e-dd34-4d9c-a846-06f431c381ba')
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#get-an-account)
 
-#### .getAccountHistory(accountId[, query[, parser=JSON[, stringifier=QS]]])
+#### .getAccountHistory(accountId[, query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {getAccountHistory} = require('coinbase-pro-api')
+const { getAccountHistory } = require('coinbase-pro-api')
 getAccountHistory('7d0f7d8e-dd34-4d9c-a846-06f431c381ba', { before: 3000 })
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#get-account-history)
 
-#### .getAccountTransfers(accountId[, query[, parser=JSON[, stringifier=QS]]])
+#### .getAccountTransfers(accountId[, query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {getAccountTransfers} = require('coinbase-pro-api')
+const { getAccountTransfers } = require('coinbase-pro-api')
 getAccountTransfers('7d0f7d8e-dd34-4d9c-a846-06f431c381ba', { before: 3000 })
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#get-account-transfers)
 
-#### .getAccountHolds(accountId[, query[, parser=JSON[, stringifier=QS]]])
+#### .getAccountHolds(accountId[, query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {getAccountHolds} = require('coinbase-pro-api')
+const { getAccountHolds } = require('coinbase-pro-api')
 getAccountHolds('7d0f7d8e-dd34-4d9c-a846-06f431c381ba', { before: 3000 })
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#get-holds)
 
-#### .placeOrder(data[, parser=JSON[, stringifier=JSON]])
+#### .placeOrder(data[, env[, parser=JSON[, stringifier=JSON]]])
 ```js
-const {placeOrder} = require('coinbase-pro-api')
+const { placeOrder } = require('coinbase-pro-api')
 
 // Buy 1 LTC @ 20 EUR
 placeOrder({ side: 'buy', size: '1', price: '20.00', product_id: 'LTC-EUR' })
@@ -158,44 +158,44 @@ placeOrder({ side: 'sell', size: '1', price: '20.00', product_id: 'LTC-EUR' })
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#place-a-new-order)
 
-#### .cancelOrder(orderId[, query[, parser=JSON[, stringifier=QS]]])
+#### .cancelOrder(orderId[, query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {cancelOrder} = require('coinbase-pro-api')
+const { cancelOrder } = require('coinbase-pro-api')
 cancelOrder('d50ec984-77a8-460a-b958-66f114b0de9b')
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#cancel-an-order)
 
-#### .cancelOrders([query[, parser=JSON[, stringifier=QS]]])
+#### .cancelOrders([query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {cancelOrders} = require('coinbase-pro-api')
+const { cancelOrders } = require('coinbase-pro-api')
 cancelOrders()
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#cancel-all)
 
-#### .getOrders([query[, parser=JSON[, stringifier=QS]]])
+#### .getOrders([query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {getOrders} = require('coinbase-pro-api')
+const { getOrders } = require('coinbase-pro-api')
 getOrders({ after: 3000, status: 'open' })
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#list-open-orders)
 
-#### .getOrder(orderId[, query[, parser=JSON[, stringifier=QS]]])
+#### .getOrder(orderId[, query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {getOrder} = require('coinbase-pro-api')
+const { getOrder } = require('coinbase-pro-api')
 getOrder('d50ec984-77a8-460a-b958-66f114b0de9b')
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#get-an-order)
 
-#### .getFills([query[, parser=JSON[, stringifier=QS]]])
+#### .getFills([query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {getFills} = require('coinbase-pro-api')
+const { getFills } = require('coinbase-pro-api')
 getFills({ product_id: 'LTC-EUR', before: 3000 })
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#list-fills)
 
-#### .convert([query[, parser=JSON[, stringifier=QS]]])
+#### .convert([query[, env[, parser=JSON[, stringifier=QS]]]])
 ```js
-const {convert} = require('coinbase-pro-api')
+const { convert } = require('coinbase-pro-api')
 convert({from: 'USD', to: 'USDC', amount: '100' })
 ```
 [» query params and responses](https://docs.pro.coinbase.com/#create-conversion)
@@ -235,4 +235,61 @@ coinbase-pro-api:hostname="api.pro.coinbase.com"
 coinbase-pro-api:key="key"
 coinbase-pro-api:passphrase="passphrase"
 coinbase-pro-api:secret="secret"
+```
+
+## Submodule Util
+The `util` submodule is primarily designed to support the needs of [coinbase-pro-api](#coinbase-pro-api) own internal APIs. However, many of the utilities are useful for application and module developers as well. It can be accessed using:
+
+```js
+const util = require('coinbase-pro-api/util')
+```
+
+#### .configurationFor(options)
+This utility generates an npm-like configuration object that can be used to override the internal configuration management:
+
+```js
+const { configurationFor } = require('coinbase-pro-api/util')
+
+const env = configurationFor({
+  sandbox: false,
+  hostname: 'api.pro.coinbase.com',
+  key: 'key',
+  passphrase: 'passphrase',
+  secret: 'secret'
+})
+
+getAccounts(query, env)
+  .then(console.log)
+  .catch(console.error)
+```
+
+#### .signatureFor(options[, env[, crypto]])
+This utility generates a base64 encoded sha256 hmac signature [compatible with coinbase-pro](https://docs.pro.coinbase.com/#signing-a-message):
+
+```js
+const timestamp = 1e-3 * Date.now()
+const method = 'get'
+const path = '/api/endpoint'
+const body = '?query=string'
+
+const signature = signatureFor({ timestamp, method, path, body}, configurationFor({ secret }))
+```
+[» selecting a timestamp](https://docs.pro.coinbase.com/#selecting-a-timestamp)
+
+## Document submodule coinbase-pro-api/client
+The `client` submodule is primarily designed to support the needs of [coinbase-pro-api](#coinbase-pro-api) own internal APIs. However, many of the utilities are useful for application and module developers as well. It can be accessed using:
+
+```js
+const util = require('coinbase-pro-api/client')
+```
+
+#### .request(options[, env])
+This utility wraps [https.request](https://nodejs.org/api/https.html#https_https_request_options_callback) and returns a promise that resolves into [https.ClientRequest](https://nodejs.org/api/http.html#http_class_http_clientrequest).
+
+```
+const { request } = require('coinbase-pro-api/client')
+
+request({ method: 'get', path: '/products' })
+  .then(res => res.pipe(process.stdout))
+  .catch(console.error)
 ```

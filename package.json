@@ -1,6 +1,6 @@
 {
   "name": "coinbase-pro-api",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "lightweight coinbase pro api implementation",
   "main": "index.js",
   "config": {
@@ -33,6 +33,8 @@
     "api",
     "gdax",
     "secure",
+    "request",
+    "signature",
     "http",
     "https",
     "client",
